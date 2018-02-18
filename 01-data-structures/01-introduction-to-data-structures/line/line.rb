@@ -9,26 +9,47 @@ class Line
   end
 
   def join(person)
+    self.members.push(person)
   end
 
   def leave(person)
+    _placeInLine = index(person)
+    self.members.delete_at(_placeInLine)
   end
 
   def front
+    return self.members.first
   end
 
   def middle
+    _midIndex = self.members.length/2
+    return self.members[_midIndex]
   end
 
   def back
+    return self.members.last
   end
 
   def search(person)
+    return index(person+1)
   end
 
   private
 
   def index(person)
+    self.members.index(person)
   end
 
 end
+
+line = Line.new
+line.join("Diane")
+line.join("Jim")
+line.join("Frederick")
+puts(line.front)
+puts(line.middle)
+puts(line.back)
+line.leave("Jim")
+puts(line.front)
+puts(line.middle)
+puts(line.back)
