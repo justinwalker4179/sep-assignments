@@ -9,7 +9,6 @@ class OpenAddressing
     hash_key = self.index(key,self.size)
     node = Node.new(key,value)
     
-    # Checks for and resizes when valid collision is found.
     if (@items[hash_key] != nil && @items[hash_key].value != node.value)
       hash_key = self.next_open_index(hash_key)
     end
