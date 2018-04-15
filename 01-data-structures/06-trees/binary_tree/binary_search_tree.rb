@@ -33,15 +33,17 @@ class BinarySearchTree
   # Recursive Depth First Search
   def find(root, data)
     current_node = root
-    if current_node == data
+    if current_node.title == data
       return current_node
     else 
+      # Searches left nodes first.
       if current_node.left != nil
         search_result = find(current_node.left, data)
         if search_result != nil
           return search_result
         end
       end
+      # Then searches right nodes.
       if current_node.right != nil
         search_result = find(current_node.right, data)
         if search_result != nil
@@ -49,14 +51,17 @@ class BinarySearchTree
         end
       end
     end
+    # Returns nil if nothing is found.
     return nil
   end
 
   def delete(root, data)
     current_node = root
-
+    if data == nil
+      return nil
+    end
     # Root node is to be deleted.
-    if self.root == data
+    if self.root.title == data
       if self.root.right.left == nil
         self.root.right.left = self.root.left
         self.root = self.root.right
@@ -66,35 +71,33 @@ class BinarySearchTree
         self.root = self.root.right
         self.insert(self.root, temp_node)
       end
-      puts "Found data."
       deleted = true
     
     # Node on the left is to be deleted.
-    elsif current_node.left == data
+    elsif current_node.left != nil && current_node.left.title == data
       target_node = current_node.left
-
       # Target node has no left or right.
       if target_node.left == nil && target_node.right == nil
-        current_node = nil
+        current_node.left = nil
       # Target node has a right, but not a left.
       elsif target_node.left == nil && target_node.right != nil
-        current_node = target_node.right
+        current_node.left = target_node.right
       # Target node has left but not a right.
       elsif target_node.left != nil && target_node.right == nil
-        current_node = target_node.left
+        current_node.left = target_node.left
       # Target node has a left and a right.
       else
         if target_node.right.left == nil
-          current_node.right.left = target_node.left
+          current_node.left = target_node.right
         else
           temp_node = target_node.right.left
-          current_node.right.left = target_node.left
+          current_node.left = target_node.right
           self.insert(self.root, temp_node)
         end
       end
 
     # Node on the right is to be deleted.
-    elsif current_node.right == data
+    elsif current_node.right != nil && current_node.right.title == data
       target_node = current_node.right
 
       # Target node has no left or right.
@@ -109,10 +112,10 @@ class BinarySearchTree
       # Target node has a left and a right.
       else
         if target_node.right.left == nil
-          current_node.right.left = target_node.left
+          current_node.right = target_node.right
         else
           temp_node = target_node.right.left
-          current_node.right.left = target_node.left
+          current_node.right = target_node.right
           self.insert(self.root, temp_node)
         end
       end
@@ -138,7 +141,7 @@ class BinarySearchTree
       
     new_children = []
     for child in children
-      puts child.title
+      puts "#{child.title}: #{child.rating}"
 
       new_children.push(child.left) if child.left != nil
       new_children.push(child.right) if child.right != nil

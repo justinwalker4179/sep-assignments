@@ -31,7 +31,7 @@ class Line
   end
 
   def search(person)
-    return index(person+1)
+    return index(person)
   end
 
   private
