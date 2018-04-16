@@ -31,15 +31,11 @@ class Line
   end
 
   def search(person)
-<<<<<<< HEAD
-    return index(person)
-=======
     if index(person) != nil
       return self.members[index(person)]
     else
       return nil
     end
->>>>>>> checkpoint-5-hashes2
   end
 
   private
