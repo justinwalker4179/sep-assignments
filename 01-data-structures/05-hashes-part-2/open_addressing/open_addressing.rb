@@ -10,7 +10,12 @@ class OpenAddressing
     node = Node.new(key,value)
     
     if (@items[hash_key] != nil && @items[hash_key].value != node.value)
-      hash_key = self.next_open_index(hash_key)
+      next_index = self.next_open_index(hash_key)
+      if next_index == -1
+        self.resize
+        next_index = self.next_open_index(hash_key)
+      end
+      hash_key = next_index
     end
     @items[hash_key] = node
   end
@@ -62,8 +67,9 @@ class OpenAddressing
         new_index = 0
       end
     end
-    self.resize
-    self.next_open_index(index)
+    return -1
+    #self.resize
+    #self.next_open_index(index)
   end
 
   # Simple method to return the number of items in the hash
@@ -97,28 +103,3 @@ class OpenAddressing
   end
 
 end
-
-star_wars_movies = OpenAddressing.new(6)
-
-star_wars_movies["Star Wars: The Phantom Menace"] = "Number One"
-star_wars_movies["Star Wars: Attack of the Clones"] = "Number Two"
-star_wars_movies["Star Wars: Revenge of the Sith"] = "Number Three"
-star_wars_movies["Star Wars: A New Hope"] = "Number Four"
-star_wars_movies["Star Wars: The Empire Strikes Back"] = "Number Five"
-star_wars_movies["Star Wars: Return of the Jedi"] = "Number Six"
-puts "---------"
-puts star_wars_movies["Star Wars: The Phantom Menace"]
-puts star_wars_movies["Star Wars: Attack of the Clones"]
-puts star_wars_movies["Star Wars: Revenge of the Sith"]
-puts star_wars_movies["Star Wars: A New Hope"]
-puts star_wars_movies["Star Wars: The Empire Strikes Back"]
-puts star_wars_movies["Star Wars: Return of the Jedi"]
-puts "----------"
-puts star_wars_movies.size
-star_wars_movies.display
-
-star_wars_movies["Star Wars: The Force Awakens"] = "Number Seven"
-star_wars_movies["Star Wars: The Last Jedi"] = "Number Eight"
-
-puts star_wars_movies.size
-star_wars_movies.display
