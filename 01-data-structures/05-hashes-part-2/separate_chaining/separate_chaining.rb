@@ -18,6 +18,7 @@ class SeparateChaining
       @items[hash_key] = link_list
     else
       @items[hash_key].add_to_tail(node)
+      @items[hash_key].print
     end
   end
 
@@ -52,6 +53,17 @@ class SeparateChaining
 
   # Calculate the current load factor
   def load_factor
+    values = 0
+    for item in @items do
+      if item != nil
+        current_node = item.head
+        until current_node == nil
+          values += 1
+          current_node = current_node.next
+        end
+      end
+    end
+    return values.to_f/@items.length
   end
 
   # Simple method to return the number of items in the hash
@@ -68,19 +80,50 @@ class SeparateChaining
     # Iterates over every item in the original array, makes a new hash key, and puts it into new @items.
     for item in temp_array do
       if item != nil
-        new_hash_key = self.index(item.key,self.size)
-        @items[new_hash_key] = item
+        current_node = item.head
+        until current_node == nil
+          new_hash_key = self.index(current_node.key,self.size)
+          @items[new_hash_key] = item
+          current_node = current_node.next
+        end
       end
     end
   end
 
   def display
+    puts "----------------"
     for item in @items do
+      print = ". "
       if item == nil
         puts "nil"
       else
-        puts item.value
+        current_node = item.head
+        until current_node == nil
+          print += "#{current_node.value} ."
+          current_node = current_node.next
+          puts current_node
+        end
+        puts print
       end
     end
+    puts "_____________________"
   end
 end
+
+hash = SeparateChaining.new(4)
+
+hash["key"] = "value"
+hash["key2"] = "value 2"
+hash["key4"] = "value 3"
+
+
+hash.display
+hash.load_factor
+
+
+#star_wars_movies["Star Wars: The Phantom Menace"] = "Number One"
+#star_wars_movies["Star Wars: Attack of the Clones"] = "Number Two"
+#star_wars_movies["Star Wars: Revenge of the Sith"] = "Number Three"
+#star_wars_movies["Star Wars: A New Hope"] = "Number Four"
+#star_wars_movies["Star Wars: The Empire Strikes Back"] = "Number Five"
+#star_wars_movies["Star Wars: Return of the Jedi"] = "Number Six"

@@ -31,25 +31,21 @@ class Line
   end
 
   def search(person)
+<<<<<<< HEAD
     return index(person)
+=======
+    if index(person) != nil
+      return self.members[index(person)]
+    else
+      return nil
+    end
+>>>>>>> checkpoint-5-hashes2
   end
 
   private
 
   def index(person)
-    self.members.index(person)
+    return self.members.index(person)
   end
 
 end
-
-line = Line.new
-line.join("Diane")
-line.join("Jim")
-line.join("Frederick")
-puts(line.front)
-puts(line.middle)
-puts(line.back)
-line.leave("Jim")
-puts(line.front)
-puts(line.middle)
-puts(line.back)

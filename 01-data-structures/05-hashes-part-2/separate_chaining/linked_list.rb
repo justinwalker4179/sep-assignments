@@ -31,7 +31,7 @@ class LinkedList
   def print
     node = self.head
     while(node != nil)
-      puts(node.data)
+      puts node.value
       node = node.next
     end
   end

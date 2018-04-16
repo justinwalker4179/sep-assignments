@@ -8,14 +8,13 @@ class MyStack
   # Adds item to top of stack.
   def push(item)
     @stack << item
-    self.top != nil ? self.top+=1 : self.top=0 # Turns top from nil into 0 or increments top.
+    self.top = item
   end
   # Removes and returns top of stack.
   def pop
-    topOfStack = @stack[self.top-1]
-    @stack.delete_at(self.top-1)
-
-    self.top != 0 ? self.top-=1 : self.top=nil # Returns top to nil when stack is empty or decrements top.
+    topOfStack = self.top
+    @stack.delete_at(-1)
+    self.top = @stack.last
     return topOfStack
   end
 
