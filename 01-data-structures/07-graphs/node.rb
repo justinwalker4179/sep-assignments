@@ -7,3 +7,5 @@ class Node
     self.film_actor_hash = Hash.new()
   end
 end
+
+boil = 6
