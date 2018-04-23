@@ -6,7 +6,7 @@ class LinkedList
 
   # This method creates a new `Node` using `data`, and inserts it at the end of the list.
   def add_to_tail(node)
-    if self.head === nil
+    if self.head == nil
       self.head = node
       self.tail = node
     else
@@ -33,7 +33,7 @@ class LinkedList
   # This method prints out a representation of the list.
   def print
     node = self.head
-    while node != nil 
+    until node == nil 
       puts(node.data)
       node = node.next
     end
@@ -64,6 +64,9 @@ class LinkedList
   def add_to_front(node)
     node.next = self.head
     self.head = node
+    if self.tail == nil && node.next == nil
+      self.tail = node
+    end
   end
 
   # This method removes and returns the first node in the Linked List and must set Linked List's head to the second node.
