@@ -41,17 +41,7 @@ class OpenAddressing
   # We are hashing based on strings, let's use the ascii value of each string as
   # a starting point.
   def index(key, size)
-    char_value = 0
-    # Adds together all of the ASCII values for each character into char_value.
-    for letter in key.chars do
-      char_value += letter.ord
-    end
-    # Increments char_value until its length equals desired size.
-    until char_value.to_s.length == 7
-      char_value*=11
-    end
-
-    return char_value%size
+    return key.sum%size
   end
 
   # Given an index, find the next open index in @items
