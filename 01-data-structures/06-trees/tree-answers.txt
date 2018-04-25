@@ -1,0 +1,26 @@
+Print both Trees to the console and compare the difference between your Binary Search Tree and your Heap.
+Insert all numbers from 1 to 100000 into both Trees, then use Benchmark to compare performance:
+How much time does an average insertion consume in the Binary Search Tree compared to the Heap?
+How much time does finding 50000 in the Binary Search Tree consume compared to the Heap?
+How much time does the average deletion consume in a Binary Search Tree compared to the Heap?
+When would you use a Binary Search Tree and why?
+When would you use an Heap and why?
+
+
+                      user     system      total        real
+HEAP::          This is the heap
+                  0.000000   0.000000   0.000000 (  0.000030)
+Insert:         2160.610000   0.344000 2160.954000 (3117.806465)
+Find 50000:       0.015000   0.000000   0.015000 (  0.009170)
+Delete:           0.047000   0.000000   0.047000 (  0.047556)
+>total:         2160.672000   0.344000 2161.016000 (3117.863190)
+>avg:           720.224000   0.114667 720.338667 (1039.287730)
+
+                      user     system      total        real
+TREE::          This is the tree
+                  0.000000   0.000000   0.000000 (  0.000030)
+Insert:         898.297000   0.203000 898.500000 (900.669516)
+
+
+In my benchmark testing I have found that the binary tree is significantly faster for insertion.
+Do to errors with too large of a stack size I couldn't test out the find or delete methods for the tree.
