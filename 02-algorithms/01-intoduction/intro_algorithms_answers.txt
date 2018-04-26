@@ -1,0 +1,26 @@
+DEF MAKE_KCUP_COFFEE(pod, size)
+  SET water to size
+  SET cup to empty
+
+  REPEAT
+    CALL turnWaterToCoffee with pod
+    Decrement water by 1
+  UNTIL water is 0
+
+  SET cup to full
+  RETURN cup
+END DEF
+
+DEF CALCULATE_TIP(bill, percent)
+  SET tip to bill multiplied by percent
+  RETURN tip
+END DEF
+
+DEF REPLY_TO_VOICEMAIL(sender, voicemail)
+  SET care to doICare for voicemail 
+  IF care is true THEN
+    GET number of sender
+    SET sender number to number
+    CALL callNumber on number
+  END IF
+END DEF
