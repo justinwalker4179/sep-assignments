@@ -1,0 +1,17 @@
+1.) Finding G would require 7 searches
+2.) Finding G would require 3 searches
+3.) Fib(9) = 34 
+  + 21 
+  Fib(10) = 55
+  + 34 
+  Fib(11) = 89
+  + 55
+  Fib(12) = 144
+
+1.) I would use an iterative linear search. With a million
+    items that deep of a recursive stack would cause a stack
+    error and it's unsorted so binary search would be ineffective.
+2.) I would use a recursive binary search. Binary would be
+    effective because the data is sorted and recursive because
+    the binary is cutting the number of items in half so the stack
+    wouldn't be overloaded.
