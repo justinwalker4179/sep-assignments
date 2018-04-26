@@ -24,3 +24,11 @@ Insert:         898.297000   0.203000 898.500000 (900.669516)
 
 In my benchmark testing I have found that the binary tree is significantly faster for insertion.
 Do to errors with too large of a stack size I couldn't test out the find or delete methods for the tree.
+
+Based on the benchmark and my understanding of the two types of data trees I would say that the tree 
+allows for the fastest input and lookup. Every insertion into a heap has the potential to have to swap 
+upwards all the way to the top making every subsequent insertion significantly longer. I'm thinking 
+something like O(n^2), with n being the number of nodes In contrast the tree's input time grows 
+arithmatically O(n). Lookup times appear to be pretty quick on both with around O(n) searches. 
+Deletion on heap would be faster with how I have it set up at O(n). Deletion on tree however would be about
+O(2n) seeing as it checks most nodes twice with how it searches for what's to be deleted. 
