@@ -27,8 +27,3 @@ def partition(arr, first, last)
   arr[last] = temp
   return p_index
 end
-
-array = [10,3,9,8,7,6,5,4,3,2,1,10,11,12,14,15,0,15]
-new_array = quicksort(array, 0, array.length-1)
-
-puts "#{new_array}"

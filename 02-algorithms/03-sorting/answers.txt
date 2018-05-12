@@ -1,0 +1,11 @@
+Heap sort is the slowest by far so I'll begin with that one. It takes such a significant amount of time because
+it must first create a heap which is (n) operations, then it must delete each element which is (n^2) because the 
+delete function has to search the entire heap to find the value at the bottom for every value.
+
+Quick sort is in the middle because the values of the array given are the Big O worst case scenario for quick sort.
+The values are in descending order meaning it has to move every value from in front of the pivot to behind for every
+subarray. 
+
+Bucket sort wins out by bypassing the quick sorts biggest problem before ultimately quick sorting the buckets. Because
+quick sort's Big O (n^2) gets much larger the bigger n is, decreasing the n sizes allows it to go much faster. 3*(n/3)^2 
+is much less than n^2 for example.

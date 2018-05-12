@@ -46,7 +46,6 @@ class BinaryHeap
     for item in self.heap
       if item == number
         deleted_number = item
-        #puts "Found #{deleted_number}"
         target_index = index
         parent_index = index/2
         lChild_index = target_index*2

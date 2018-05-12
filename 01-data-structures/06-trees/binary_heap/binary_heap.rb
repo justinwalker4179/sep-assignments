@@ -1,7 +1,4 @@
 require_relative 'movie'
-require 'benchmark'
-include Benchmark
-
 
 class BinaryHeap
   attr_accessor :root
@@ -147,32 +144,4 @@ class BinaryHeap
     self.heap[child_index] = nil
     self.insert(dropped_child)
   end
-end
-
-
-n = 0
-root = Movie.new("Root",0)
-heap = BinaryHeap.new(root)
-Benchmark.benchmark(CAPTION, 15, FORMAT, ">total:", ">avg:") do |searchHeap|
-  searchHeap.report("HEAP:: ") {puts "This is the heap"}
-  ti = searchHeap.report("Insert:") {
-    index = 10000
-    counter = 10000
-    until index == n
-      if index == counter
-        puts counter
-        counter -= 1000
-      end
-      node = Movie.new(index.to_s,index)
-      heap.insert(node)
-      index -= 1
-    end
-  }
-  tf = searchHeap.report("Find 50000: "){
-    number = heap.find("5000")
-  }
-  td = searchHeap.report("Delete: "){
-    heap.delete("12345")
-  }
-  [ti+tf+td, (ti+tf+td)/3]
 end

@@ -1,6 +1,4 @@
 require_relative 'node'
-require 'benchmark'
-include Benchmark
 
 class BinarySearchTree
 
@@ -150,32 +148,4 @@ class BinarySearchTree
     end
     self.printf(new_children) if new_children.size != 0
   end
-end
-
-n = 0
-root = Node.new("Root",0)
-tree = BinarySearchTree.new(root)
-Benchmark.benchmark(CAPTION, 15, FORMAT, ">total:", ">avg:") do |searchTree|
-  searchTree.report("TREE:: ") {puts "This is the tree"}
-  ti = searchTree.report("Insert:") {
-    index = 7000
-    counter = 1000
-    until index == n
-      if index == counter
-        puts counter
-        counter -= 1000
-      end
-      node = Node.new(index.to_s,index)
-      tree.insert(root, node)
-      index -= 1
-    end
-  }
-  tf = searchTree.report("Find 50000: "){
-    number = tree.find(root, "3000")
-    puts number.title
-  }
-  td = searchTree.report("Delete: "){
-    tree.delete(root, "1234")
-  }
-  [ti+tf+td, (ti+tf+td)/3]
 end
