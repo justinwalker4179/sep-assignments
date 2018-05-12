@@ -1,29 +1,34 @@
-class Array
-  def quickSort(low=0, high=self.length-1)
-    self.push("fluff")
-  end
-  def partition(low=0, high=1)
-    pivot_index = 0
-    pivot_value = self.[](low)
-    puts pivot_value
-    #new_array = [pivot_value]
-    #for item in @array[low..high]
-    #  if item > pivot_value
-    #new_array.push(item)
-    #  else
-    #    new_array.unshift(item)
-    #    pivot_index += 1
-    #  end
-    #  puts "New_array is #{new_array}"
-    #end
-    #@array = []
-    #for item in new_array
-    #  @array.push(item)
-    #end
-    #return pivot_index+1
-  end
-end
+def sort(array, bucketSize=DEFAULT_BUCKET_SIZE):
+  if len(array) == 0:
+    return array
 
-array = Array.new([5,6,7,8])
-array.partition
+  # Determine minimum and maximum values
+  minValue = array[0]
+  maxValue = array[0]
+  for i in range(1, len(array)):
+    if array[i] < minValue:
+      minValue = array[i]
+    elif array[i] > maxValue:
+      maxValue = array[i]
 
+  # Initialize buckets
+  bucketCount = math.floor((maxValue - minValue) / bucketSize) + 1
+  buckets = []
+  for i in range(0, bucketCount):
+    buckets.append([])
+
+  # Distribute input array values into buckets
+  for i in range(0, len(array)):
+    buckets[math.floor((array[i] - minValue) / bucketSize)].append(array[i])
+
+  # Sort buckets and place back into input array
+  array = []
+  for i in range(0, len(buckets)):
+    insertion_sort.sort(buckets[i])
+    for j in range(0, len(buckets[i])):
+      array.append(buckets[i][j])
+
+  return array
+    end
+
+    puts 3/2

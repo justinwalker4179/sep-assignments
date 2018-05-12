@@ -1,43 +1,34 @@
-class Array
-  def quickSort(low, high)
-    if low < high
-      puts "Array before is #{self}"
-      pivot_index = self.partition(low, high)
-      self.quickSort(low, pivot_index - 1)
-      self.quickSort(pivot_index + 1, high)
-      puts "Array after sort is #{self}"
-    end
+def quicksort(arr, first, last)
+  if first < last
+    p_index = partition(arr, first, last)
+    quicksort(arr, first, p_index - 1)
+    quicksort(arr, p_index + 1, last)
   end
-  def partition(low, high)
-    pivot_index = -1
-    pivot_value = self.[](low)
-    new_array = []
-    for item in self.[](low..high)
-      if item > pivot_value
-        new_array.push(item)
-      else
-        new_array.unshift(item)
-        pivot_index += 1
-      end
-    end
-    
-    for item in new_array
-      self.[]=(low,item)
-      low += 1 unless low == high
-    end
-    return pivot_index
-  end
+
+  return arr
 end
 
+def partition(arr, first, last)
+  pivot = arr[last]
+  p_index = first
+  
+  i = first
+  while i < last
+    if arr[i] <= pivot
+      temp = arr[i]
+      arr[i] = arr[p_index]
+      arr[p_index] = temp
+      p_index += 1
+    end
+    i += 1
+  end
+  temp = arr[p_index]
+  arr[p_index] = pivot
+  arr[last] = temp
+  return p_index
+end
 
+array = [10,3,9,8,7,6,5,4,3,2,1,10,11,12,14,15,0,15]
+new_array = quicksort(array, 0, array.length-1)
 
-array = [8,4,6,9,5,1,10,3,2,7]
-length = array.length-1
-
-
-array.quickSort(0,length)
-puts "Sorted array is supposed to be #{array}"
-#array.partition(2,4)
-#puts "Partitioned #{array}"
-#array.partition(4,6)
-#puts "Partitioned #{array}"
+puts "#{new_array}"
