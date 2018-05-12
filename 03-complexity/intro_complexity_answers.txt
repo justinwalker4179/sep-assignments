@@ -1,0 +1,14 @@
+1.) O(1) is like an eagle flying while O(2n) is like a human walking.
+2.) The best case scenario for binary search is BigOmega(1) which happens when the value 
+    being searched for is the middle value of the array.
+3.) The worst case scenario for binary search is BigO(log n) which happens when the value 
+    being looked for is at the beginning or end.
+4.) The middle scenario for binary search is BigTheta((log n)/2)
+
+6.) The limit as n approaches infinity in that graph is infinity. 
+7.) The graph is (2^n).
+
+8-9.) Linear search has BigO(n), BigTheta(n/2), and BigOmega(1). A function that shows this 
+      would just output whatever is put into it and the graph would be a straight diagonal line.
+
+10-12.) See above.
