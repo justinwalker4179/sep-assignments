@@ -1,0 +1,6 @@
+1.) The BigO of goodbye_world is 1 because only ever runs 1 time.
+2.) Find largest will have a BigO (n) because it will always iterate over every item in the array once.
+3.) BigO (n) again because it still runs through every item in both arrays only once.
+4.) BigO (n^2 * logn). I can't point a specific reason, I just did the math and that equation fit the most accurately.
+5.) BigO(n) the addition loop runs n-1 times.
+6.) BigO(n^2) It's essentially a pivot sort.
