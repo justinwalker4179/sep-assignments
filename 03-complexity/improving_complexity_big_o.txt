@@ -1,0 +1,3 @@
+Improving complexity one has a bigO(n^2 + n).
+Two has BigO(n^2 + n/x)
+Three has BigO(n^2 + n)
